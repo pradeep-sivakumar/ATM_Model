@@ -1,0 +1,66 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="ATM_Model.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url(atm1.jpg);
+            background-size: cover;
+        }
+
+
+        ul {
+            list-style-type: none;
+            margin-left: 29%;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        li {
+            float: left;
+        }
+
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+        .btn {
+            margin: 8px;
+            border: 2px solid white;
+            border-radius: 3px;
+        }
+
+            .btn:hover {
+                background-color: white;
+                color: black;
+                border: 2px solid black;
+            }
+    </style>
+    <form id="form1" runat="server">
+        <div>
+            <ul>
+                <%--<li><a class="btn" href="Default.aspx">Home</a></li>--%>
+                <li><a class="btn" href="Default0.aspx">Deposit</a></li>
+                <li><a class="btn" href="Default1.aspx">Check Balance</a></li>
+                <li><a class="btn" href="Default2.aspx">Withdraw</a></li>
+                <li><a class="btn" href="Default3.aspx">Change PIN</a></li>
+                <li><a class="btn" href="Default4.aspx">Cancel Transaction</a></li>
+            </ul>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
