@@ -4,20 +4,22 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+
 
 namespace ATM_Model
 {
     public partial class Default2 : System.Web.UI.Page
     {
-        public static int balance;
-        public static string pin;
+        SqlConnection conn = new SqlConnection("Data Source=PRADEEP-SIVAKUM\\SQLEXPRESS;Initial Catalog=ATM;Integrated Security=True");
+        public double balance;
+        public int pin;
+        public int id;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             { 
-             ViewState["d"] = Cache["pin1"];
-
-             balance = Convert.ToInt32(Cache["bala"]);             
+            
             }
         }
         public void empty()
@@ -25,40 +27,46 @@ namespace ATM_Model
             TextBox1.Text = "";
             TextBox2.Text = "";
         }
-        public void remember(int balance)
-        {
-            Cache["bala"] = balance;
-        }
+        
         protected void Button1_Click(object sender, EventArgs e)
         {
 
-            int amount = Convert.ToInt32(TextBox1.Text);
-            string enteredPin = TextBox2.Text;
-            Label3.Text = pin;
-            if (ViewState["d"].Equals(enteredPin))
+            id = Convert.ToInt32(Request.Cookies["cook"].Value);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand($"select pin from atm where id={id}", conn);
+            SqlCommand cmd1 = new SqlCommand($"select balance from atm where id={id}", conn);
+            pin = Convert.ToInt32(cmd.ExecuteScalar());
+            balance = Convert.ToDouble(cmd1.ExecuteScalar());
+            conn.Close();
+            double amount = Convert.ToDouble(TextBox1.Text);
+            int enteredPin = Convert.ToInt32(TextBox2.Text);
+
+            if (pin == enteredPin)
             {
+                
                 if (amount <= balance)
                 {
                     balance -= amount;
+                    conn.Open();
+                    SqlCommand a = new SqlCommand($"update atm set balance = {balance} where id={id}", conn);
+                    a.ExecuteNonQuery();
                     Label3.ForeColor = System.Drawing.Color.Green;
                     Label3.Text = "Amount Withdrawn Successfully!";
                     empty();
-                    remember(balance);
                 }
                 else
                 {
-                    Label3.ForeColor = System.Drawing.Color.Green;
-                    Label3.Text = "Amount Withdrawn Successfully!";
+                    Label3.ForeColor = System.Drawing.Color.Red;
+                    Label3.Text = "Insufficient Funds..";
                     empty();
                 }
-                
+
             }
             else
             {
                 Label3.ForeColor = System.Drawing.Color.Red;
                 Label3.Text = "Entered PIN is wrong!";
                 empty();
-                remember(balance);
             }
         }
     }

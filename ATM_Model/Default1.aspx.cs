@@ -4,28 +4,32 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+
 
 namespace ATM_Model
 {
     public partial class Default1 : System.Web.UI.Page
     {
-        public static string pin;
-        public static int balance;
+        SqlConnection conn = new SqlConnection("Data Source=PRADEEP-SIVAKUM\\SQLEXPRESS;Initial Catalog=ATM;Integrated Security=True");
+        public int id;
+        public int pin;
+        public double balance;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                ViewState["d"] = Cache["pin1"];
-
-                balance = Convert.ToInt32(Cache["bala"]);
-            }
+            
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-           
-
-            if (ViewState["d"].Equals(TextBox2.Text))
+            id = Convert.ToInt32(Request.Cookies["cook"].Value);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand($"select pin from atm where id={id}", conn);
+            SqlCommand cmd1 = new SqlCommand($"select balance from atm where id={id}", conn);
+            pin = Convert.ToInt32(cmd.ExecuteScalar());
+            balance = Convert.ToDouble(cmd1.ExecuteScalar());
+            conn.Close();
+            if (pin==Convert.ToInt32(TextBox2.Text))
             {
                 Label3.ForeColor = System.Drawing.Color.Green;
                 Label3.Text = $"Current Available Balance is {balance}.";

@@ -50,7 +50,7 @@
                             <br />
                             <h1 class="auto-style2">Thank You For Using The Service...❤</h1>
                             <p class="auto-style2">
-                                <asp:Button ID="Button1" runat="server" BackColor="#6600CC" ForeColor="White" Height="49px" OnClick="Button1_Click" Text="Back to Home🏠" Width="201px" />
+                                <asp:Button ID="Button1" runat="server" BackColor="#6600CC" ForeColor="White" Height="49px" OnClick="Button1_Click" Text="Back to Login" Width="201px" />
                             </p></td>
                     </tr>
                     </table>

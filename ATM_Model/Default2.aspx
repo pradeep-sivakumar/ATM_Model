@@ -13,6 +13,37 @@
         height: 333px;
         margin-bottom: 18px;
     }
+        
+        ul {
+            list-style-type: none;
+            margin-left: 29%;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        li {
+            float: left;
+        }
+
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+        .btn {
+            margin: 8px;
+            border: 2px solid white;
+            border-radius: 3px;
+        }
+
+            .btn:hover {
+                background-color: white;
+                color: black;
+                border: 2px solid black;
+            }
     .auto-style3 {
         width: 356px;
         height: 61px;
@@ -40,9 +71,15 @@
         .auto-style12 {
             height: 50px;
         }
+        .auto-style13 {
+            border-radius: 3px;
+            border: 2px solid white;
+            margin: 8px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+  
     <div style="text-align:center">
 
         <table align="center" class="auto-style1">
@@ -57,7 +94,7 @@
                     <asp:Label ID="Label1" runat="server" Text="Enter the amount to withdraw"></asp:Label>
                 </td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="TextBox1" runat="server" Height="32px" Width="260px" MaxLength="5"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" Height="32px" Width="260px" MaxLength="100"></asp:TextBox>
                 </td>
             </tr>
             <tr>

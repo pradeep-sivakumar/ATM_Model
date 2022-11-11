@@ -60,14 +60,20 @@
                 <h2>Banking Services 24x7</h2>
                 <table align="center" class="auto-style1">
                     <tr>
-                        <td class="auto-style5">Enter the new PIN</td>
+                        <td class="auto-style5">Enter Banking ID</td>
                         <td class="auto-style4">
-                            <asp:TextBox ID="TextBox1" runat="server" CssClass="auto-style6" TextMode="Password" Height="32px" Width="218px" MaxLength="4"></asp:TextBox>
+                            <asp:TextBox ID="TextBox1" runat="server" CssClass="auto-style6" Height="32px" Width="218px" MaxLength="4"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style5">Enter your PIN</td>
+                        <td class="auto-style4">
+                            <asp:TextBox ID="TextBox2" runat="server" CssClass="auto-style6" TextMode="Password" Height="32px" Width="218px" MaxLength="4"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
                         <td class="auto-style7" colspan="2">
-                            <asp:Button ID="Button1" runat="server" BackColor="#6600FF" ForeColor="White" Height="51px" CssClass="ttt" Text="Set PIN" Width="167px" OnClick="Button1_Click" />
+                            <asp:Button ID="Button1" runat="server" BackColor="#6600FF" ForeColor="White" Height="51px" CssClass="ttt" Text="Login" Width="167px" OnClick="Button1_Click" />
                         </td>
                     </tr>
                     <tr>
